@@ -86,3 +86,5 @@ Route::resource('/posts', PostController::class)->only(['index', 'show']);
 // 📌 except method: Partial Resource
 Route::resource('/posts', PostController::class)->except(['index', 'show']);
 ```
+
+- Khi bạn dùng `only, except`, những list này sẽ thay đổi `php artisan route:list`, nó chỉ show khi mà chúng ta **đặt điều kiện** cho nó.
