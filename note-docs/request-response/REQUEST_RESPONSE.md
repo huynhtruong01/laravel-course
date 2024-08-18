@@ -1,8 +1,12 @@
 ## Request & Response
 
+- [Request \& Response](#request--response)
+  - [`01` - Request](#01---request)
+  - [`02` - Response](#02---response)
+
 ---
 
-### Request
+### `01` - Request
 
 1. **`Request Input`**
 
@@ -24,7 +28,7 @@ Route::get('/posts', function(Request $request) {
 
 ---
 
-### Response
+### `02` - Response
 
 1. **`Response Object`**
 

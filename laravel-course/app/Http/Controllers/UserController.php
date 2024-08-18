@@ -12,6 +12,23 @@ class UserController extends Controller
     public function index()
     {
         //
+        return [
+            [
+                'id' => 1,
+                'name' => 'Truong',
+                'age' => 20
+            ],
+            [
+                'id' => 2,
+                'name' => 'Truong 2',
+                'age' => 25
+            ],
+            [
+                'id' => 3,
+                'name' => 'Truong 3',
+                'age' => 22
+            ],
+        ];
     }
 
     /**

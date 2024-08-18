@@ -2,6 +2,9 @@
 
 ![Eloquent ORM](../images/eloquent-orm-overview.png)
 
+- [Eloquent ORM](#eloquent-orm)
+  - [`01` - CRUD](#01---crud)
+
 ---
 
 ### `01` - CRUD

@@ -2,6 +2,10 @@
 
 ![Database Laravel Overview](../images/database-overview.png)
 
+- [Database](#database)
+  - [`01` - Migrations](#01---migrations)
+  - [`02` - Seeding](#02---seeding)
+
 ---
 
 ### `01` - Migrations

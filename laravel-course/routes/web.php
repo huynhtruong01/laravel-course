@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 $posts = [
@@ -39,10 +39,12 @@ Route::get('/contact', function () {
     return 'Contact';
 });
 
-Route::prefix('/posts')->group(function () use ($posts) {
+Route::prefix('/posts')->group(function () {
     Route::get('/', [PostController::class, 'index']);
-
     Route::get('/{id}', [PostController::class, 'show']);
+    Route::post('/', [PostController::class, 'create']);
+    Route::put('/{id}', [PostController::class, 'update']);
+    Route::delete('/{id}', [PostController::class, 'delete']);
 });
 
 Route::get('/recent-post/{day_ago?}', function ($dayAgo = 20) {
@@ -60,3 +62,5 @@ Route::get('/home', function () {
 Route::get('/download', function () {
     return response()->download(public_path('/image-1.jpg'), 'Natural');
 });
+
+Route::resource('users', UserController::class)->only(['index']);
