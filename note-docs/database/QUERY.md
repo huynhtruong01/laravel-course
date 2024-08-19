@@ -2,6 +2,7 @@
 
 - [Query](#query)
   - [`01` - Lazy Loading vs Eager Loading](#01---lazy-loading-vs-eager-loading)
+  - [`02` - withCount + relation data name](#02---withcount--relation-data-name)
 
 ---
 
@@ -53,3 +54,48 @@ SELECT * FROM `comments` WHERE `post_id` IN (1, 2, 3, ...); -- 📌 get relation
 
 > - **Ưu điểm**: Giảm số lượng truy vấn, tránh vấn đề `N+1 query`, tối ưu hiệu suất.
 > - **Nhược điểm**: Tải nhiều dữ liệu ngay lập tức, có thể không cần thiết nếu không sử dụng tất cả các mối quan hệ.
+
+---
+
+### `02` - withCount + relation data name
+
+- **withCount**: được dùng để count relation array data theo từng record 1.
+
+```php
+<?php
+
+$posts = Post::withCount('comments')->get();
+```
+
+- **Nó sẽ render như này**: (`name_relation` + `_count`)
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Title 1",
+      "description": "Description 2222",
+      "comments_count": 20
+    },
+    {
+      "id": 2,
+      "title": "Title 2",
+      "description": "Description 3434343",
+      "comments_count": 12
+    }
+  ]
+}
+```
+
+- Hoặc bạn có thể thêm `query condition` trong **withCount** và dùng `[]`:
+
+```php
+<?php
+
+$posts = Post::withCount(['comments' => function($query) => {
+  $query->where('like', '>', '1');
+}])->get();
+```
+
+- **Nó vẫn ra format như trên**.
