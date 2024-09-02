@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\VerifyAccount;
 use Illuminate\Support\Facades\Route;
 
 $posts = [
@@ -41,7 +42,7 @@ Route::get('/contact', function () {
 
 Route::prefix('/posts')->group(function () {
     Route::get('/', [PostController::class, 'index']);
-    Route::get('/{id}', [PostController::class, 'show']);
+    Route::get('/{id}', [PostController::class, 'show'])->middleware('verify-account');
     Route::post('/', [PostController::class, 'create']);
     Route::put('/{id}', [PostController::class, 'update']);
     Route::delete('/{id}', [PostController::class, 'delete']);
